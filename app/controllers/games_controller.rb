@@ -10,6 +10,7 @@ class GamesController < ApplicationController
     @tags = @game.tags
     @comments = @game.comments
     @comment = Comment.new
+    @rating = Rating.find_or_create_by(user: @user, game: @game)
 
     if @user.owned_games.include?(@game)
       @owned_game = UserGame.find_by(user: current_user, game: @game)

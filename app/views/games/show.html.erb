@@ -10,6 +10,10 @@
     <p><%= @game.description %></p>
   </div>
 
+  <div class="rate-game">
+    <%= render partial: 'ratings/form', locals: {user: current_user, game: @game, rating: @rating} %>
+  </div>
+
   <div class="add-or-remove-button">
     <% if @owned_game.user == nil %>
       <%= form_for @owned_game, url: user_games_path do |f| %>
